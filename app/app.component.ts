@@ -14,21 +14,37 @@ export class AppComponent {
     public level: string;
     public time: number;
     public dismisable: boolean;
+    public position: string;
+    public levels: string[];
+    public positions:string[];
 
     constructor(private _toastService: ToastService) {
 
     }
     
     ngOnInit() {
+        this.levels = this._toastService.getLevels();
+        this.positions = this._toastService.getPositions();
         this._toastService.addToast("Your latest obomination", this.level, -1, true);
-        this._toastService.addToast("Your latest obomination mark 2", this.level, -1, true);
+        // this._toastService.addToast("Your latest obomination mark 2", this.level, -1, true);
     }
 
     addToast() {
-        this._toastService.addToast(this.message, this.level, this.time, this.dismisable);
-        this.message = "My wee message here";
-        this.level = undefined;
-        this.time = undefined;
-        this.dismisable = undefined;
+        console.log(this.level);
+        this._toastService.addToast(this.message, 
+            this.level, 
+            this.time, 
+            this.dismisable, 
+            this.position
+        );
+    }
+    
+    setLevel(level: string) {
+        this.level = level;
+        console.log(level);
+    }
+    
+    setPosition(position: string) {
+        this._toastService.setPosition(position);
     }
 }

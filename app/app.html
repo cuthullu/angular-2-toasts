@@ -1,12 +1,28 @@
 <div class="container">
     <toast-container></toast-container>
     <div class="row myrow">
-        <form class="form-inline">
+        <form class="form-inline padded">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Message" [(ngModel)]="message" >
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Level" [(ngModel)]="level" >
+                <label>Alert Level</label>
+                <div class="radio" *ngFor="#levelOp of levels">
+                      <label>
+                        <input type="radio" name="levelOpRadio" value="{{levelOp}}" (click)="setLevel(levelOp)" >
+                        {{levelOp}}
+                      </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Position</label>
+                <div class="radio" *ngFor="#posOp of positions">
+                      <label>
+                        <input type="radio" name="posOpRadio" value="{{posOp}}" (click)="setPosition(posOp)">
+                        {{posOp}}
+                      </label>
+                </div>
             </div>
             <div class="form-group">
                 <input type="number" class="form-control" placeholder="Time" [(ngModel)]="time" >
