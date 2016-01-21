@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {OnInit} from 'angular2/core'
-import {Todo} from './todos/models/todo'
 import {ToastComponent} from './toast/component/toast.component'
 import {ToastService} from './toast/service/toast.service'
 @Component({
@@ -19,10 +18,14 @@ export class AppComponent {
     constructor(private _toastService: ToastService) {
 
     }
+    
+    ngOnInit() {
+        this._toastService.addToast("Your latest obomination", this.level, this.time, true);
+    }
 
     addToast() {
         this._toastService.addToast(this.message, this.level, this.time, this.dismisable);
-        this.message = undefined;
+        this.message = "My wee message here";
         this.level = undefined;
         this.time = undefined;
         this.dismisable = undefined;

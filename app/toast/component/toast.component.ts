@@ -11,6 +11,9 @@ import {ToastService} from '../service/toast.service'
     <div class="toast-container">
         <div *ngFor="#toast of toasts" class="alert toast alert-{{toast.level}}" role="alert">
             {{toast.message}}
+            <div class="dismiss-container">
+                <button class="btn dismiss-button" (click)="dismisToast(toast)">X</button>
+            </div>
         </div>
     </div>`,
     styles: [`
@@ -30,5 +33,9 @@ export class ToastComponent {
 
     ngOnInit() {
         this.toasts = this._toastService.getToasts();
+    }
+    
+    dismisToast(toast:Toast) {
+        this._toastService.dismisToast(toast);
     }
 }
