@@ -20,7 +20,8 @@ export class AppComponent {
     }
     
     ngOnInit() {
-        this._toastService.addToast("Your latest obomination", this.level, this.time, true);
+        this._toastService.addToast("Your latest obomination", this.level, -1, true);
+        this._toastService.addToast("Your latest obomination mark 2", this.level, -1, true);
     }
 
     addToast() {

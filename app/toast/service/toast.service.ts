@@ -16,9 +16,13 @@ export class ToastService {
 
         var toast = new Toast(message, level, lifetime, dismisable);
         this.toasts.push(toast);
-        setTimeout(() =>
-            this.toasts.splice(this.toasts.indexOf(toast, 1)), toast.lifetime
-        );
+        if(toast.lifetime > -1) {
+            setTimeout(() =>
+                this.toasts.splice(this.toasts.indexOf(toast, 1)), toast.lifetime
+            );
+        }else {
+            toast.dismisable = true;
+        }
     }
 
     dismisToast(toast: Toast) {

@@ -9,21 +9,16 @@ import {ToastService} from '../service/toast.service'
     selector: 'toast-container',
     template: `
     <div class="toast-container">
-        <div *ngFor="#toast of toasts" class="alert toast alert-{{toast.level}}" role="alert">
-            {{toast.message}}
-            <div class="dismiss-container">
-                <button class="btn dismiss-button" (click)="dismisToast(toast)">X</button>
+        <div *ngFor="#toast of toasts" class="alert toast alert-{{toast.level}} row" role="alert">
+            <div class="toast-text-container">
+                <span>{{toast.message}}</span>
+            </div>
+            <div *ngIf="toast.dismisable" class="toast-dismiss-container">
+                <button class="btn dismiss-btn" (click)="dismisToast(toast)">X</button>
             </div>
         </div>
     </div>`,
-    styles: [`
-    .toast {
-        position: absolute;
-        top: 0;
-        z-index: 40;
-    }
-    `]
-
+    styleUrls: ["app/toast/style/toast.style.css"]
 })
 
 export class ToastComponent {
