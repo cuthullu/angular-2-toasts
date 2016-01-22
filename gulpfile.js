@@ -25,6 +25,7 @@ gulp.task('tslint', function() {
 gulp.task('scripts', function() {
 	return gulp.src('app/**/*.ts')
 		.pipe(ts(tsProject))
+        .pipe(gulp.dest('dist/app'))
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('dist'))
         .pipe(rename('uglify.js'))
