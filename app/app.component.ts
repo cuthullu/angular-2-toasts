@@ -4,7 +4,7 @@ import {ToastComponent} from './toast/component/toast.component'
 import {ToastService} from './toast/service/toast.service'
 @Component({
     selector: 'my-app',
-    templateUrl: "/app/app.html",
+    templateUrl: "app/app.html",
     styleUrls:['app/styles/style.css'],
     directives: [ToastComponent]
 })
